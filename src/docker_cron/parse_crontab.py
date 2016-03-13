@@ -2,7 +2,31 @@ from crontab import CronTab
 import re
 
 
-class CronJob:
+def parse_crontab(file_path):
+    file_cron = CronTab(tabfile=file_path)
+    jobs = list()
+    for entry in [job for job in file_cron if job.is_enabled()]:
+        cron_entry = CronEntry(command=str(entry.command),
+                             minute=str(entry.minute),
+                             hour=str(entry.hour),
+                             day=str(entry.day),
+                             month=str(entry.month),
+                             day_of_week=str(entry.dow),
+                             comment=str(entry.comment))
+        jobs.append(cron_entry)
+        pass
+    return jobs
+
+
+def parse_crontabs(*file_paths):
+    ret = list()
+    for file_path in file_paths:
+        ret.extend(parse_crontab(file_path))
+        pass
+    return ret
+
+
+class CronEntry:
     """
     Custom structure for store parsed crontab entry.
     """
@@ -27,7 +51,6 @@ class CronJob:
             self._comment = result.group('comment')
         else:
             self._comment = comment
-
 
     @property
     def command(self):
@@ -99,26 +122,3 @@ class CronJob:
     @property
     def runner(self):
         return self._runner_name
-
-def parse_crontab(file_path):
-    file_cron = CronTab(tabfile=file_path)
-    jobs = list()
-    for entry in [job for job in file_cron if job.is_enabled()]:
-        cron_job = CronJob(command=str(entry.command),
-                           minute=str(entry.minute),
-                           hour=str(entry.hour),
-                           day=str(entry.day),
-                           month=str(entry.month),
-                           day_of_week=str(entry.dow),
-                           comment=str(entry.comment))
-        jobs.append(cron_job)
-        pass
-    return jobs
-
-
-def parse_crontabs(*file_paths):
-    ret = list()
-    for file_path in file_paths:
-        ret.extend(parse_crontab(file_path))
-        pass
-    return ret
