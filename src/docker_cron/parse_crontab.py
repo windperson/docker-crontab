@@ -7,12 +7,12 @@ def parse_crontab(file_path):
     jobs = list()
     for entry in [job for job in file_cron if job.is_enabled()]:
         cron_entry = CronEntry(command=str(entry.command),
-                             minute=str(entry.minute),
-                             hour=str(entry.hour),
-                             day=str(entry.day),
-                             month=str(entry.month),
-                             day_of_week=str(entry.dow),
-                             comment=str(entry.comment))
+                               minute=str(entry.minute),
+                               hour=str(entry.hour),
+                               day=str(entry.day),
+                               month=str(entry.month),
+                               day_of_week=str(entry.dow),
+                               comment=str(entry.comment))
         jobs.append(cron_entry)
         pass
     return jobs
