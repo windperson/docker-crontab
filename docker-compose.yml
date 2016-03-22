@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  scheduler-service:
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/src
+    environments:
+      TZ: Asia/Taipei
