@@ -1,2 +1,5 @@
 FROM python3-dev
-ENV TZ=
+ARG TZ
+ENV TZ=${TZ:-Asia/Taipei}
+RUN pip install --no-cache-dir ipython pdbpp
+CMD bash

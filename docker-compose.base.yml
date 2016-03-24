@@ -3,7 +3,6 @@ version: '2'
 services:
   python3-base:
     image: python3-dev
-    build:
-      context: ./base_image/python3
+    build: ./base_image/python3
     volumes:
       - /etc/localtime:/etc/localtime:ro

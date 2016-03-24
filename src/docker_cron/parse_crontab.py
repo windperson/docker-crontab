@@ -32,6 +32,7 @@ class CronEntry:
     """
     _pattern = '@"(?P<runner>[\w ]+)"\s*:\s*(?P<comment>.*)$'
     _remote_info = re.compile(_pattern)
+    _comment = None
 
     def __init__(self, command=None, minute=None, hour=None, day=None, month=None, day_of_week=None, comment=None):
         self._command = command
@@ -41,7 +42,6 @@ class CronEntry:
         self._month = month
         self._day_of_week = day_of_week
         self._parse_comment(comment)
-        pass
 
     def _parse_comment(self, comment):
         result = self._remote_info.match(comment)

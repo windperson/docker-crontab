@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  cron-serv-dev-cli:
+    image: cron-serv-dev
+    build:
+      context: .
+      args:
+        PROJ_
+        PROJ_SRC_DIR: /src
+        PIP_REQUIRE_DIR: ./src/
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/src
+    environment:
+      TZ: $TZ
+    entrypoint: bash

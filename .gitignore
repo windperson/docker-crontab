@@ -1,3 +1,4 @@
 config/*
 .idea/
 virtual_env/
+**/__pycache__/

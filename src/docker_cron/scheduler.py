@@ -5,9 +5,9 @@ from .job_runner.shell_cmd_runner import gen_run_sh_job
 
 
 class CronScheduler:
-    '''
+    """
     APScheduler wrapper
-    '''
+    """
     tz = get_localzone()
     scheduler = BG_scheduler(timezone=tz)
     __cron_entries = list()
@@ -27,14 +27,14 @@ class CronScheduler:
         pass
 
     def start_scheduler(self):
-        self.scheduler.start();
+        self.scheduler.start()
         pass
 
     def stop_scheduler(self):
         self.scheduler.shutdown()
         pass
 
-    @property()
+    @property
     def cronjob(self):
         return self.__cron_entries
 
