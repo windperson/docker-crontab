@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import logging
 from cron_serv.logger import ConsoleLogger
 from cron_serv.cron_serv import init_scheduler
 
@@ -29,6 +30,9 @@ def parse_commandline(logger):
 
 def main():
     logger = ConsoleLogger()
+    logging.getLogger('apscheduler.scheduler').setLevel('WARNING')
+    logging.getLogger('apscheduler.scheduler').propagate = False
+    logging.getLogger('apscheduler.executors').setLevel('WARNING')
     init_scheduler(parse_commandline(logger), logger)
     pass
 

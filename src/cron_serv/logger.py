@@ -6,12 +6,14 @@ class ConsoleLogger:
     """
     Output log to stdout
     """
-    __logger = logging.getLogger()
-    __ch = logging.StreamHandler(sys.stdout)
 
-    def __init__(self):
-        self.__logger.setLevel(logging.INFO)
-        self.__logger.addHandler(self.__ch)
+    def __init__(self, name=None, level=logging.INFO):
+        self.__logger = logging.getLogger(name)
+        self.__logger.setLevel(level)
+        if not self.__logger.handlers:
+            self.__ch = logging.StreamHandler(sys.stdout)
+            self.__logger.addHandler(self.__ch)
+        self.__logger.propagate = False
         pass
 
     def debug(self, msg, *args, **kwargs):

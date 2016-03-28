@@ -23,7 +23,8 @@ class CronScheduler:
                                    month=job.month,
                                    day=job.day,
                                    hour=job.hour,
-                                   minute=job.minute)
+                                   minute=job.minute,
+                                   name=job.command)
         pass
 
     def start_scheduler(self):
