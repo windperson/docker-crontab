@@ -18,12 +18,16 @@ class GracefulKiller:
 def init_scheduler(crontab_paths, logger):
     scheduler = CronScheduler()
     scheduler.read_crontabs(crontab_paths)
+    cronjobs = scheduler.cronjob;
+    logger.info("cron job(s): {}".format(cronjobs))
     scheduler_killer = GracefulKiller()
+    scheduler.queue_in_jobs()
     logger.info("start scheduler")
     scheduler.start_scheduler()
     while True:
         if scheduler_killer.kill_now:
             scheduler.stop_scheduler()
+            logger.info("stop scheduler")
             break
         else:
             time.sleep(0.5)

@@ -1,6 +1,6 @@
 from tzlocal import get_localzone
 from apscheduler.schedulers.background import BackgroundScheduler as BG_scheduler
-from .parse_crontab import parse_crontabs, CronEntry
+from .parse_crontab import parse_crontabs
 from .job_runner.shell_cmd_runner import gen_run_sh_job
 
 

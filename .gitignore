@@ -2,3 +2,4 @@ config/*
 .idea/
 virtual_env/
 **/__pycache__/
+debug-eggs/

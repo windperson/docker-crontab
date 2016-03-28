@@ -18,7 +18,7 @@ def parse_crontab(file_path):
     return jobs
 
 
-def parse_crontabs(*file_paths):
+def parse_crontabs(file_paths):
     ret = list()
     for file_path in file_paths:
         ret.extend(parse_crontab(file_path))
@@ -33,6 +33,8 @@ class CronEntry:
     _pattern = '@"(?P<runner>[\w ]+)"\s*:\s*(?P<comment>.*)$'
     _remote_info = re.compile(_pattern)
     _comment = None
+    _local_run = True
+    _runner_name = 'localhost'
 
     def __init__(self, command=None, minute=None, hour=None, day=None, month=None, day_of_week=None, comment=None):
         self._command = command

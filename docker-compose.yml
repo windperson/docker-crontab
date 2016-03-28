@@ -1,11 +1,10 @@
 version: '2'
 
 services:
-  cron-serv-dev-cli:
-    image: cron-serv-dev
+  cron-serv:
+    image: cron-serv
     build:
       context: .
-      dockerfile: Dockerfile.dev
       args:
         PROJ_CONF_DIR: /sample_crontab
         PROJ_SRC_DIR: /src
@@ -16,4 +15,4 @@ services:
       - ./src:/src
     environment:
       TZ: $TZ
-    entrypoint: bash
+    entrypoint:
