@@ -1,4 +1,5 @@
 import subprocess
+import sys
 import time
 from ..logger import ConsoleLogger
 
@@ -13,10 +14,12 @@ def gen_run_sh_job(command, logger=ConsoleLogger('cron_serv.local-runner')):
 
     def run_sh():
         logger.info("run scheduled job {0} at: {1}".format(command, time.strftime("%Y/%m/%d %H:%M:%S")))
-        out = subprocess.run(args=[command], universal_newlines=True, stdout=subprocess.PIPE, shell=True)
-        if out.stderr and len(out.stderr.splitlines()) > 0:
-            logger.info(out.stderr.splitlines())
-            pass
-        pass
+        try:
+            out = subprocess.check_output(args=[command], universal_newlines=True, shell=True)
+            if out and len(out) > 0:
+                logger.info(out)
+                pass
+        except:
+            logger.error("Run sh job failed:\n%s", sys.exc_info()[0])
 
     return run_sh
