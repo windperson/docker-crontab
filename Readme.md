@@ -13,6 +13,6 @@ Build docker image on project root folder:
 
 `docker build -t docker-crontab .`
 
-Then run using following command:
+Then run it use following command:
 
-`docker run --name cron -e TZ=$TZ -v \`pwd\`/src:/proj -v \`pwd\`/config:/conf -v /etc/localtime:/etc/localtime:ro -it docker-crontab bash`
+```docker run --name cron -e TZ=$TZ -v `pwd`/src:/proj -v `pwd`/config:/conf -v /etc/localtime:/etc/localtime:ro -it docker-crontab bash```
