@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  python2-base:
+    build: ./base_image/python2
+    image: python2-base
+    volumes:
+      - /etc/localtime:/etc/localtime:ro

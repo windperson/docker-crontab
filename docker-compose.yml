@@ -9,7 +9,7 @@ services:
         PROJ_CONF_DIR: /sample_crontab
         PROJ_SRC_DIR: /src
         PIP_REQUIRE_DIR: ./src/
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.python3.dev
     volumes:
       - ./sample_crontab:/sample_crontab
       - ./src:/src

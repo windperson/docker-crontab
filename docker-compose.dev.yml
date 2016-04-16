@@ -5,12 +5,11 @@ services:
     image: cron-serv-dev
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.python${PYTHON_VER}.dev
       args:
         PROJ_CONF_DIR: /sample_crontab
         PROJ_SRC_DIR: /src
         PIP_REQUIRE_DIR: ./src/
-      dockerfile: Dockerfile.dev
     volumes:
       - ./sample_crontab:/sample_crontab
       - ./src:/src
