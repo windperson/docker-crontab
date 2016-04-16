@@ -3,3 +3,4 @@ config/*
 virtual_env/
 **/__pycache__/
 debug-eggs/
+*.pyc

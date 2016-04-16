@@ -3,7 +3,9 @@
     "files.exclude": {
 		"**/.git": true,
 		"**/.DS_Store": true,
-        "**/.idea": true
+        "**/.idea": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true
 	},
     "files.associations": {
         "Dockerfile.*.*": "dockerfile"
