@@ -6,7 +6,7 @@ if [ -z $PYTHON_VER ]
 then
     base_yml=docker-compose.python3.base.yml
 else
-    base_yml=docker-compose.pyton${PYTHON_VER}.base_yml
+    base_yml=docker-compose.python${PYTHON_VER}.base.yml
 fi
 
 set -x
