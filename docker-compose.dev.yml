@@ -2,7 +2,7 @@ version: '2'
 
 services:
   cron-serv-dev-cli:
-    image: cron-serv-dev
+    image: cron-serv-dev:python${PYTHON_VER}
     build:
       context: .
       dockerfile: Dockerfile.python${PYTHON_VER}.dev
