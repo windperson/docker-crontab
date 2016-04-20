@@ -2,17 +2,18 @@ version: '2'
 
 services:
   cron-serv:
-    image: cron-serv
+    image: cron-serv:python${PYTHON_VER}
     build:
       context: .
+      dockerfile: Dockerfile.python${PYTHON_VER}
       args:
         PROJ_CONF_DIR: /sample_crontab
         PROJ_SRC_DIR: /src
         PIP_REQUIRE_DIR: ./src/
-      dockerfile: Dockerfile.python3.dev
     volumes:
       - ./sample_crontab:/sample_crontab
       - ./src:/src
     environment:
       TZ: $TZ
     entrypoint:
+      - circusd --log-level ${CIRCUS_LOG_LEVEL} /etc/circus/circus.ini
