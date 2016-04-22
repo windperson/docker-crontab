@@ -15,4 +15,5 @@ services:
       - ./src:/src
     environment:
       TZ: $TZ
+      crontab_paths: /sample_crontab
     entrypoint: bash

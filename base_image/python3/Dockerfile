@@ -5,6 +5,7 @@ RUN pip install --no-cache-dir --upgrade pip setuptools
 ONBUILD ARG PIP_REQUIRE_DIR
 ONBUILD COPY ${PIP_REQUIRE_DIR}/requirements.txt /tmp/
 ONBUILD RUN pip install --no-cache-dir -r /tmp/requirements.txt
+ONBUILD RUN rm -f /tmp/requirements.txt
 ONBUILD ARG PROJ_SRC_DIR
 ONBUILD ENV PROJ_SRC_DIR ${PROJ_SRC_DIR:-/proj}
 ONBUILD ARG PROJ_CONF_DIR

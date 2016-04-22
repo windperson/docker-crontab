@@ -4,3 +4,4 @@ virtual_env/
 **/__pycache__/
 debug-eggs/
 *.pyc
+.vscode/.browse.VC.db

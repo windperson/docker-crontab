@@ -1,6 +1,8 @@
 FROM python3-base
+MAINTAINER Charles Pao "windperson@gmail.com"
 ARG TZ
-ENV TZ=${TZ:-Asia/Taipei}
+ENV TZ=${TZ:-UTC}
 RUN pip install --no-cache-dir circus
-COPY src /proj
-VOLUME /conf
+COPY production_conf ${PROJ_CONF_DIR}
+COPY src ${PROJ_SRC_DIR}
+ENTRYPOINT [ "sh", "-c" "circusd" "--log-level" "${CIRCUS_LOG_LEVEL}" "/etc/circus/circus.ini"]
