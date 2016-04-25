@@ -1,7 +1,8 @@
 FROM python3-base
 ARG TZ
 ENV TZ=${TZ:-Asia/Taipei}
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y bash-completion && apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update\
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y bash-completion\
+ && DEBIAN_FRONTEND=noninteractive apt-get clean
 RUN pip install --no-cache-dir ipython pudb pydevd
 CMD bash

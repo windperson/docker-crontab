@@ -8,12 +8,11 @@ services:
       dockerfile: Dockerfile.python${PYTHON_VER}
       args:
         PROJ_CONF_DIR: /etc/circus/
-        PROJ_SRC_DIR: /src
+        PROJ_SRC_DIR: /src/
         PIP_REQUIRE_DIR: ./src/
     volumes:
       - ./sample_crontab:/sample_crontab
     environment:
-      TZ: $TZ
-      crontab_paths: /sample_crontab
-#    entrypoint:
-#      - circusd --log-level ${CIRCUS_LOG_LEVEL} /etc/circus/circus.ini
+      - TZ=${TZ}
+      - crontab_paths=/sample_crontab/test.crontab
+      - CIRCUS_LOG_LEVEL=debug

@@ -4,5 +4,7 @@ ARG TZ
 ENV TZ=${TZ:-UTC}
 RUN pip install --no-cache-dir circus
 COPY production_conf ${PROJ_CONF_DIR}
+COPY entrypoint.sh /
+RUN sed -i -e 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
 COPY src ${PROJ_SRC_DIR}
-ENTRYPOINT [ "sh", "-c" "circusd" "--log-level" "${CIRCUS_LOG_LEVEL}" "/etc/circus/circus.ini"]
+CMD [ "/entrypoint.sh" ]

@@ -1,6 +1,7 @@
 FROM python:3-slim
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y apt-utils g++ less libzmq-dev libevent-dev python3-dev && apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils g++ less libzmq-dev libevent-dev python3-dev \
+ && DEBIAN_FRONTEND=noninteractive apt-get clean
 RUN pip install --no-cache-dir --upgrade pip setuptools
 ONBUILD ARG PIP_REQUIRE_DIR
 ONBUILD COPY ${PIP_REQUIRE_DIR}/requirements.txt /tmp/

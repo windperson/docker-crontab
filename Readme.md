@@ -1,4 +1,8 @@
-#### Usage
+#docker-crontab
+
+A crontab replacement for running periodical jobs in server.
+
+## Usage
 
 First, you need to find out your current \*nix system time zone,
 To get linux local time zone:
@@ -9,15 +13,15 @@ CentOS 6.x: ``cat /etc/sysconfig/clock | sed -n 's/ZONE="\(.*\)"/\1/p'``
 
 CentOS 7.x: ``ls -l /etc/localtime | sed -n 's/.*\/zoneinfo\/\(.*\)/\1/p'``
 
-Build docker image on project root folder:
+Build docker image using script in sh folder:
 
-`docker build -t docker-crontab .`
+```./sh/devcli.sh -b```
 
 Then run it use following command:
 
-```docker run --name cron -e TZ=$TZ -v `pwd`/src:/proj -v `pwd`/config:/conf -v /etc/localtime:/etc/localtime:ro -it docker-crontab bash```
+```docker run --name cron -e TZ=$TZ -e crontab_paths=/test_cron/test.crontab -e CIRCUS_LOG_LEVEL=debug -v `pwd`/src:/proj -v `pwd`/config:/conf -v /etc/localtime:/etc/localtime:ro -it docker-crontab bash```
 
 
-#### Develop
+## Develop
 
 Run `./sh/devcli.sh`

@@ -1,5 +1,7 @@
 FROM python:2-slim
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y apt-utils g++ less libzmq-dev libevent-dev python-dev && apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils g++ less libzmq-dev libevent-dev python-dev \
+ && DEBIAN_FRONTEND=noninteractive  apt-get clean
 RUN pip install --no-cache-dir --upgrade pip setuptools
 ONBUILD ARG PIP_REQUIRE_DIR
 ONBUILD COPY ${PIP_REQUIRE_DIR}/requirements.txt /tmp/

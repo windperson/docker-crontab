@@ -2,6 +2,8 @@
 
 base_yml=docker-compose.python3.base.yml
 
+build_only=false
+
 while getopts "hb" arg; do
     case $arg in
       h)
@@ -25,10 +27,9 @@ else
 fi
 
 set -x
-docker-compose -f ${base_yml} build
-docker-compose -f docker-compose.dev.yml build
-if [ -z $build_only ]
+source ./sh/build_base_image.sh && docker-compose -f docker-compose.dev.yml build
+if [ "$build_only" = false ]
 then
+echo "enter dev cli:"
     docker-compose -f docker-compose.dev.yml run --rm --name dev-cli cron-serv-dev-cli
 fi
-exit
