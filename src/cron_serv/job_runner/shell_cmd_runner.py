@@ -17,6 +17,7 @@ def gen_run_sh_job(command, logger=ConsoleLogger('cron_serv.local-runner')):
         logger.info("run scheduled job {0} at: {1}".format(command, time.strftime("%Y/%m/%d %H:%M:%S")))
         # noinspection PyBroadException
         try:
+            assert sys.version_info >= (2, 7)
             out = subprocess.check_output(args=[command], universal_newlines=True, shell=True)
             if out and len(out) > 0:
                 logger.info(out)
