@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  python3.4-base:
+    build: ./base_image/python3.4
+    image: python3.4-base
+    volumes:
+      - /etc/localtime:/etc/localtime:ro

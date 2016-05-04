@@ -1,0 +1,10 @@
+FROM python3.4-base
+MAINTAINER Charles Pao "windperson@gmail.com"
+ARG TZ
+ENV TZ=${TZ:-UTC}
+RUN pip install --no-cache-dir circus
+COPY production_conf ${PROJ_CONF_DIR}
+COPY entrypoint.sh /
+RUN sed -i -e 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
+COPY src ${PROJ_SRC_DIR}
+CMD [ "/entrypoint.sh" ]
