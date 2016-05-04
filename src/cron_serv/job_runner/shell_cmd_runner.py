@@ -18,12 +18,22 @@ def gen_run_sh_job(command, logger=ConsoleLogger('cron_serv.local-runner')):
         # noinspection PyBroadException
         try:
             assert sys.version_info >= (2, 7)
-            out = subprocess.check_output(args=[command], universal_newlines=True, shell=True)
-            if out and len(out) > 0:
-                logger.info(out)
+            if sys.version_info >= (3, 5):
+                complete_process = subprocess.run(args=[command], universal_newlines=True, stdout=subprocess.PIPE, shell=True)
+                if complete_process.stderr and len(complete_process.stderr.splitlines()) > 0:
+                    logger.info(complete_process.stderr.splitlines())
+                pass
+            else:
+                out = subprocess.check_output(args=[command], universal_newlines=True, shell=True)
+                if out and len(out) > 0:
+                    logger.info(out)
                 pass
         except subprocess.CalledProcessError as e:
             logger.error("Run sh job failed:\n%s", e.output)
+            if sys.version_info >= (3, 5):
+                logger.error("stdout=\n%s", e.stdout)
+                logger.error("stderr=\n%s", e.stderr)
+                pass
         except:
             logger.error("Run sh job failed with some other error!\n%s", traceback.format_exc())
 

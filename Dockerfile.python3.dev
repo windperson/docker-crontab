@@ -4,5 +4,5 @@ ENV TZ=${TZ:-Asia/Taipei}
 RUN DEBIAN_FRONTEND=noninteractive apt-get update\
  && DEBIAN_FRONTEND=noninteractive apt-get install -y bash-completion\
  && DEBIAN_FRONTEND=noninteractive apt-get clean
-RUN pip install --no-cache-dir ipython pudb pydevd
+RUN pip install --no-cache-dir ipython pip-review pudb pydevd
 CMD bash
