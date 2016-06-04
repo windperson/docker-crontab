@@ -8,11 +8,11 @@ services:
       dockerfile: Dockerfile.python${PYTHON_VER}.dev
       args:
         PROJ_CONF_DIR: /sample_crontab
-        PROJ_SRC_DIR: /src
-        PIP_REQUIRE_DIR: ./src/
+        PROJ_SRC_DIR: /cron-server
+        PIP_REQUIRE_DIR: ./src
     volumes:
       - ./sample_crontab:/sample_crontab
-      - ./src:/src
+      - ./src:/cron-server
     environment:
       TZ: $TZ
       crontab_paths: /sample_crontab

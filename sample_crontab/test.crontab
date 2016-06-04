@@ -1,8 +1,7 @@
-# @"python2": running job on another computing instance called python2 via celery working queue.
+# @"python2": running job on another computing instance called python2 via celery working queue.(TBD)
 * * * * * echo "test `date`" >> /var/log/run.log
-
 # ======= running in the same instance
 # Run show date every 1 minute
 * * * * * echo "@ `date`" >> /var/log/run-cron_serv.log
-# Save something every 5 minutes to log file
-*/5 * * * * echo "log @ `date`" >> /var/log/run5.log
+# Save something every 2 minutes in an hour to target log file
+*/2 * * * * echo "log @ `date`" >> /var/log/run5.log

@@ -7,9 +7,9 @@ services:
       context: .
       dockerfile: Dockerfile.python${PYTHON_VER}
       args:
-        PROJ_CONF_DIR: /etc/circus/
-        PROJ_SRC_DIR: /src/
-        PIP_REQUIRE_DIR: ./src/
+        PROJ_CONF_DIR: /etc/circus
+        PROJ_SRC_DIR: /cron-server
+        PIP_REQUIRE_DIR: ./src
     volumes:
       - ./sample_crontab:/sample_crontab
     environment:
