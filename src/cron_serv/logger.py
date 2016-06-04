@@ -14,29 +14,23 @@ class ConsoleLogger:
             self.__ch = logging.StreamHandler(sys.stdout)
             self.__logger.addHandler(self.__ch)
         self.__logger.propagate = False
-        pass
 
     def debug(self, msg, *args, **kwargs):
         self.__logger.debug(msg, *args, **kwargs)
         self.__ch.flush()
-        pass
 
     def info(self, msg, *args, **kwargs):
         self.__logger.info(msg, *args, **kwargs)
         self.__ch.flush()
-        pass
 
     def warning(self, msg, *args, **kwargs):
         self.__logger.warning(msg, *args, **kwargs)
         self.__ch.flush()
-        pass
 
     def error(self, msg, *args, **kwargs):
         self.__logger.error(msg, *args, **kwargs)
         self.__ch.flush()
-        pass
 
     def critical(self, msg, *args, **kwargs):
         self.__logger.critical(msg, *args, **kwargs)
         self.__ch.flush()
-        pass

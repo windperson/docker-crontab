@@ -61,7 +61,6 @@ class CronEntry:
     @command.setter
     def command(self, value):
         self._command = value
-        pass
 
     @property
     def minute(self):
@@ -70,7 +69,6 @@ class CronEntry:
     @minute.setter
     def minute(self, value):
         self._minute = value
-        pass
 
     @property
     def hour(self):
@@ -79,7 +77,6 @@ class CronEntry:
     @hour.setter
     def hour(self, value):
         self._hour = value
-        pass
 
     @property
     def day(self):
@@ -88,7 +85,6 @@ class CronEntry:
     @day.setter
     def day(self, value):
         self._day = value
-        pass
 
     @property
     def month(self):
@@ -97,7 +93,6 @@ class CronEntry:
     @month.setter
     def month(self, value):
         self._month = value
-        pass
 
     @property
     def day_of_week(self):
@@ -106,7 +101,6 @@ class CronEntry:
     @day_of_week.setter
     def day_of_week(self, value):
         self._day_of_week = value
-        pass
 
     @property
     def comment(self):
@@ -115,7 +109,6 @@ class CronEntry:
     @comment.setter
     def comment(self, value):
         self._comment = value
-        pass
 
     @property
     def is_local(self):

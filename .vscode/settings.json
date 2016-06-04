@@ -9,6 +9,7 @@
 	},
     "files.associations": {
         "Dockerfile.*": "dockerfile",
-        "Dockerfile.*.*": "dockerfile"
+        "Dockerfile.*.*": "dockerfile",
+        "*.crontab": "ini"
     }
 }

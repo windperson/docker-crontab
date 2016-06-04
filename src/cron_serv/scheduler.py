@@ -14,7 +14,6 @@ class CronScheduler:
 
     def read_crontabs(self, file_paths):
         self.__cron_entries = parse_crontabs(file_paths)
-        pass
 
     def queue_in_jobs(self):
         for job in self.__cron_entries:
@@ -25,18 +24,13 @@ class CronScheduler:
                                    hour=job.hour,
                                    minute=job.minute,
                                    name=job.command)
-        pass
 
     def start_scheduler(self):
         self.scheduler.start()
-        pass
 
     def stop_scheduler(self):
         self.scheduler.shutdown()
-        pass
 
     @property
     def cronjob(self):
         return self.__cron_entries
-
-    pass

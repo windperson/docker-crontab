@@ -8,7 +8,7 @@ from cron_serv.cron_serv import init_scheduler
 
 def is_valid_file(parser, arg):
     if not os.path.isfile(arg):
-        parser.error('The file {} does not exist!'.format(arg))
+        parser.error('{} is not a valid file.'.format(arg))
     else:
         # File exists so return the filename
         return arg
@@ -34,7 +34,6 @@ def main():
     logging.getLogger('apscheduler.scheduler').propagate = False
     logging.getLogger('apscheduler.executors').setLevel('WARNING')
     init_scheduler(parse_commandline(logger), logger)
-    pass
 
 
 if __name__ == '__main__':
