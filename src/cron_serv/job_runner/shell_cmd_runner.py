@@ -13,7 +13,7 @@ def gen_run_sh_job(command, logger=ConsoleLogger('cron_serv.local-runner')):
     :return: parameter less function
     """
 
-    def run_sh():
+    def run_sh(command=command,logger=logger):
         logger.info("run scheduled job {0} at: {1}".format(command, time.strftime("%Y/%m/%d %H:%M:%S")))
         # noinspection PyBroadException
         try:
